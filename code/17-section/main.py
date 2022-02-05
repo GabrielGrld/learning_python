@@ -1,13 +1,16 @@
+from question_model import Question
+from data2 import question_data
+from quiz_brain import QuizBrain
 
+question_bank = []
+for question in question_data:
+    q_object = Question(question["question"], question["correct_answer"])
+    question_bank.append(q_object)
 
-class Question:
+game = QuizBrain(question_bank)
 
-    def __init__(self, q_text, q_answer):
-        self.text = q_text
-        self.answer = q_answer
+while game.still_has_questions():
+    game.next_question()
 
-
-new_q = Question ("hola es una palabra", True)
-
-print (new_q.text)
-print (new_q.answer)
+print("You have completed the quiz")
+print(f"Your final score is {game.score}/{game.question_number}")
