@@ -32,8 +32,10 @@ def random_walk(_steps, _steps_length):
         jimmy.seth(random.choice(orientation))
         jimmy.forward(_steps_length)
 
-random_walk(steps, steps_length)
 
+random_walk (steps, steps_length)
 
+screen = Screen()
+screen.exitonclick()
 
 
