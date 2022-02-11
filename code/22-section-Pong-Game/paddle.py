@@ -1,42 +1,25 @@
-from turtle import Turtle
+from turtle import Turtle, Screen
 
-
-STARTING_POSITIONS = [(350, 50), (350, 30), (350, 10), (350, -10), (350, -20)]
+screen = Screen()
 MOVE_DISTANCE = 20
 
 
-class Paddle:
+class Paddle(Turtle):
 
-    def __init__(self):
+    def __init__(self, position):
         super().__init__()
-        self.segments = []
-        self.create_paddle()
-        self.head = self.segments[0]
+        self.shape("square")
+        self.color("white")
+        self.penup()
+        screen.tracer(0)
+        self.goto(position)
+        self.shapesize(stretch_wid=5, stretch_len=1)
+        screen.update()
 
-    def create_paddle(self):
-        for position in STARTING_POSITIONS:
-            self.add_segment(position)
+    def go_up(self):
+        new_y = self.ycor() + 20
+        self.goto(self.xcor(), new_y)
 
-    def add_segment(self, position):
-        new_segment = Turtle("square")
-        new_segment.color("white")
-        new_segment.penup()
-        new_segment.goto(position)
-        self.segments.append(new_segment)
-
-    def move(self):
-        for seg_num in range(len(self.segments)-1, 0, -1):
-            new_x = self.segments[seg_num-1].xcor()
-            new_y = self.segments[seg_num-1].ycor()
-            self.segments[seg_num].goto(new_x, new_y)
-        self.segments[0].forward(MOVE_DISTANCE)
-
-    def up(self):
-        new_x = self.head.xcord()
-        new_y = self.head.ycord() + MOVE_DISTANCE
-        self.goto(new_x, new_y)
-
-    def down(self):
-        new_x = self.head.xcord()
-        new_y = self.head.ycord() - MOVE_DISTANCE
-        self.goto(new_x, new_y)
+    def go_down(self):
+        new_y = self.ycor() - 20
+        self.goto(self.xcor(), new_y)
