@@ -12,11 +12,11 @@
 #             temperatures.append(int(row[1]))
 #     print(temperatures)
 
-
-import pandas
-
-data = pandas.read_csv("weather_data.csv")
-# print(type(data))
+#
+# import pandas
+#
+# data = pandas.read_csv("weather_data.csv")
+# # print(type(data))
 # print(type(data["temp"]))
 
 # data_dict = data.to_dict()
@@ -41,13 +41,35 @@ data = pandas.read_csv("weather_data.csv")
 # print(monday_temp*(9/5)+32)
 
 # Create a dataframe from scratch
+# data_dict = {
+#     "students": ["Amy", "James", "Angle"],
+#     "scores": [75, 56, 65]
+# }
+#
+# data_from_dict = pandas.DataFrame(data_dict)
+# print(data_from_dict)
+# data.to_csv("new_data.csv")
+#
+# data_from_dict.to_excel("data_check.xlsx")
+
+
+# using Central Park Squirrel Data
+import pandas
+
+squirrel_data = pandas.read_csv("2018_Central_Park_Squirrel_Census_-_Squirrel_Data.csv")
+grey_squirrel_count = len(squirrel_data[squirrel_data["Primary Fur Color"] == "Gray"])
+red_squirrel_count = len(squirrel_data[squirrel_data["Primary Fur Color"] == "Cinnamon"])
+black_squirrel_count = len(squirrel_data[squirrel_data["Primary Fur Color"] == "Black"])
+print(grey_squirrel_count)
+print(red_squirrel_count)
+print(black_squirrel_count)
+
 data_dict = {
-    "students": ["Amy", "James", "Angle"],
-    "scores": [75, 56, 65]
+    "Fur Color": ["Gray", "Cinnamon", "Black"],
+    "Count": [grey_squirrel_count, red_squirrel_count, black_squirrel_count]
 }
 
-data_from_dict = pandas.DataFrame(data_dict)
-print(data_from_dict)
-data.to_csv("new_data.csv")
+df = pandas.DataFrame(data_dict)
+df.to_csv("squirrel_count.csv")
 
-data_from_dict.to_excel("data_check.xlsx")
+
