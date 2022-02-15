@@ -36,6 +36,18 @@ data = pandas.read_csv("weather_data.csv")
 # print(data[data.day == "Monday"])
 # print(data[data.temp == data.temp.max()])
 
-monday = data[data.day == "Monday"]
-monday_temp = int(monday.temp)
-print(monday_temp*(9/5)+32)
+# monday = data[data.day == "Monday"]
+# monday_temp = int(monday.temp)
+# print(monday_temp*(9/5)+32)
+
+# Create a dataframe from scratch
+data_dict = {
+    "students": ["Amy", "James", "Angle"],
+    "scores": [75, 56, 65]
+}
+
+data_from_dict = pandas.DataFrame(data_dict)
+print(data_from_dict)
+data.to_csv("new_data.csv")
+
+data_from_dict.to_excel("data_check.xlsx")
