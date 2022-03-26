@@ -1,0 +1,28 @@
+student_dict = {
+    "student": ["Angela", "James", "Lily"],
+    "score": [56, 76, 98]
+}
+
+# looping through dictionaries
+for (key, value) in student_dict.items():
+    print(key)
+    print(value)
+
+import pandas as pd
+
+student_df = pd.DataFrame(student_dict)
+
+print(student_df)
+
+# # looping through a dat frame
+# for (key, value) in student_df.items():
+#     print(value)
+
+print("---------------")
+# looping through  rows  of a data frame
+for (index, row) in student_df.iterrows():
+    print(row.student)
+
+for (index, row) in student_df.iterrows():
+    if row.student == "Angela":
+        print(row.score)
